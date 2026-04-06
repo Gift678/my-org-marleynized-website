@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .gallery { display: flex; flex-wrap: wrap; }
+        .gallery-item { margin: 5px; width: calc(33.33% - 10px); position: relative; }
+        .gallery-item img { width: 100%; height: auto; }
+        .pricing { position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.5); color: white; padding: 5px; }
+        .filter { margin: 15px; }
+        .filter button { margin-right: 5px; }
+    </style>
+    <script>
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (item.dataset.category === category || category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Gallery</h1>
+    <div class="filter">
+        <button onclick="filterGallery('all')">All</button>
+        <button onclick="filterGallery('art')">Art</button>
+        <button onclick="filterGallery('photography')">Photography</button>
+        <button onclick="filterGallery('design')">Design</button>
+    </div>
+    <div class="gallery">
+        <div class="gallery-item" data-category="art">
+            <img src="art1.jpg" alt="Art 1">
+            <div class="pricing">$100</div>
+        </div>
+        <div class="gallery-item" data-category="photography">
+            <img src="photo1.jpg" alt="Photo 1">
+            <div class="pricing">$150</div>
+        </div>
+        <div class="gallery-item" data-category="design">
+            <img src="design1.jpg" alt="Design 1">
+            <div class="pricing">$200</div>
+        </div>
+        <!-- Add more gallery items as needed -->
+    </div>
+    <a href="https://wa.me/?text=Check%20out%20this%20gallery%20page!" target="_blank">Contact us on WhatsApp</a>
+</body>
+</html>
